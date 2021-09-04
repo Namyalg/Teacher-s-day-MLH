@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudQ</title>
+    <link rel="stylesheet" href="landing_page.css">
+</head>
+<body>
+    <h1>Pick your role</h1>
+
+    <span style="display: inline;">
+    <button onclick="location.href = '/host_view.html';">Host</button>
+    <button onclick="location.href = '/participant_view.html';">Participant</button>
+    </span>
+
+    <div class="bg-modal">
+        <div class="modal-content">
+            <!-- <img src=""> -->
+            <script>
+
+                window.onload = () => {
+                    // in addition to null check add the value you wanna compare with
+                    //session is for tab - i.e if you close the tab then you loose the password
+                    //whereas for window even if you close the browser the password will be thereforever
+                    //damn cool isn't it? :)
+                    
+                if(localStorage.getItem("pwd") != null){
+                location.href = "/host_view.html";
+                }
+                };
+
+                function set_password() {
+
+                    console.log(localStorage.getItem("pwd"))
+                    let paswd = document.getElementById("paswd").value;
+                    
+                    
+                    localStorage.setItem("pwd", paswd);
+                    console.log(localStorage.getItem("pwd"))
+                    location.href = "/host_view.html";
+
+                }
+                
+            </script>
+
+            <!-- <form action="/host_view.html"> -->
+                    <input type="password" id="paswd" placeholder="SSshhhh!">
+                    <button onclick="set_password()">Next please</button>
+            <!-- </form> -->
+        </div>
+        
+    </div>
+</body>
+</html>
