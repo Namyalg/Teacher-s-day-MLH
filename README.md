@@ -45,4 +45,8 @@ So here comes **StudQ** to the **rescue**. It is a chrome extension that can be 
 2.Voice support to answer queries such as “who is next”, “when is my turn” .
 3. Approximate calculations on the time slot for a student based on previous trends 
 
+## Video Demonstration
+
+https://youtu.be/_BQlp4Z-X_U
+
 
