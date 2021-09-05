@@ -1,3 +1,7 @@
+# StudQ
+
+![Logo]('./StudQ_logo.PNG')
+
 ## Inspiration
 
 During the online classes, teachers find it hard to keep track of the order in which students join for project presentations or for viva or any events. On the other hand, students keep waiting for their turn for a long time. We want to improve the user experience for both the students and teachers so that they don't get drained and frustrated waiting for long hours. Our hack is synonymous with the real-life queue system where people have to get a token and wait for their turn in an orderly manner. 
