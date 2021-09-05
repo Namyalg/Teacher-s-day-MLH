@@ -1,6 +1,6 @@
 # StudQ
 
-![Logo]('StudQ_logo.png?raw=true')
+![Sample FIR](StudQ_logo.png?raw=true "FIR")
 
 ## Inspiration
 
