@@ -1,28 +1,28 @@
-{
 
-    "manifest_version": 2,
-    "name": "Attendance Automation System",
-    "version": "0.9",
-    "description": "creates a list of all Meet chats",
-    "author": "Shabinder Singh",
-    "permissions": [
-      "tabs",
-      "storage"
-    ],
-  
-    "content_scripts": [
-      {
-        "matches": ["*://meet.google.com/*" , "*://zoom.us/*","*://us04web.zoom.us/*"],
-        "js": ["Meet-Attendance.js"]
-      }
-    ],
-    
-    "background": {
-        "scripts": ["background.js"]
-    },
-    
-    "browser_action": {
-        "default_popup": "popup.html",
-        "default_title": "Attendance Taker"
+{
+  "manifest_version": 2,
+  "name": "Q",
+  "description": "This sample shows how to place students in a queue for online sesions",
+  "version": "2.1",
+
+  "browser_action": {
+    "default_popup": "popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://meet.google.com/*" , "*://zoom.us/*","*://us04web.zoom.us/*"],
+      "js": ["Meet-Attendance.js"]
     }
+  ],
+  "background": {
+    "page": "background.html"
+  },
+  "permissions": [
+    "identity",
+    "tabs",
+    "storage"
+  ],
+ 
+  "content_security_policy":"script-src 'self' https://www.gstatic.com/ https://*.firebaseio.com https://www.googleapis.com; object-src 'self'"
+  
 }
