@@ -13,7 +13,7 @@ firebase.initializeApp(firebaseConfig);
 
 var database = firebase.database();
 var students = database.ref().child("students");
-console.log("stuents")
+console.log("students")
 
 function deleteQueue(){
   students.remove();
@@ -21,44 +21,68 @@ function deleteQueue(){
 }
 
 
-function checkIfStudentExists(currentStudent){
-  students.once('value', function(snapshot){
-    snapshot.forEach(
-      function (child){
-        let name = child.val().Name;
-        let time = child.val().Time;
-
-        console.log("name is ")
-        console.log(name);
-
-        
-        if(name == currentStudent){
-          return true;
-        }
-        console.log(name)
-        console.log(time)
-      }
-    )
-  });
-  return false;
-}
-
 
 
   students.on("child_added", function(snapshot, prevChildKey) {
       var newPost = snapshot.val();
       console.log(newPost);
+      var myArrayFromLocalStorage = localStorage.getItem('myArray')
+      var myArray = []
+      if (myArrayFromLocalStorage && myArrayFromLocalStorage.length) {
+         myArray = JSON.parse(myArrayFromLocalStorage)
+          
+      }
+
+    
+
       var name = newPost.Name;
       var time = newPost.Time;      
       var table = document.getElementById("myTable");
       var row = table.insertRow();
       var cell1 = row.insertCell(0);
       var cell2 = row.insertCell(1);
-      var cell3 = row.insertCell(2);
+      var cell4 = row.insertCell(2);
 
       cell1.innerHTML = name;
       cell2.innerHTML = time;
-      cell3.innerHTML = "Not done";
+      cell4.innerHTML = "<button onclick='deleteEntry(this)'>remove</button>"
 
     });
   
+
+    function deleteEntry(reference)
+    {
+        var row = reference.parentNode.parentNode;
+        //document.getElementById("myTable").deleteRow(row.rowIndex);
+        var n = document.getElementById("myTable").rows[row.rowIndex].cells[0].innerHTML;
+        database.ref().child("students").once('value', function(snapshot){
+          var names = [];
+          snapshot.forEach(
+            function (child){
+              let name = child.val().Name;
+              if(n == name){
+                //alert(child.key);
+                database.ref().child("students").child(child.key).remove()
+                var myArrayFromLocalStorage = localStorage.getItem('myArray')
+                  if (myArrayFromLocalStorage && myArrayFromLocalStorage.length) {
+                  var myArray = JSON.parse(myArrayFromLocalStorage)
+                  myArray.push(name);
+                  alert("here")
+                  localStorage.setItem('myArray', JSON.stringify(myArray))
+                    for(var j = 0; j < myArray.length; j++){
+                      console.log(myArray[j])
+                    }
+    
+                }
+                location.reload()
+                return;
+              }
+
+            }
+          )
+         
+        });
+
+
+        //ref.child(key).remove();
+    }

@@ -33,9 +33,6 @@ window.onload = function(){
     function buttonClicked(val){
         var data = [];
         localStorage.setItem('status', "set")
-        console.log("I am here in this thingy");
-        console.log(document.domain)
-        console.log("buttonCicked");
         data.push(4);
         chrome.tabs.query(params, doIt);
         console.log(data);
@@ -43,7 +40,8 @@ window.onload = function(){
             chrome.tabs.sendMessage(tabs[0].id, val);
         }
     } 
-    
+
     function save(){
+        
     }
 }

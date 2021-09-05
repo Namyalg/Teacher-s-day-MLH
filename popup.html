@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Attendance Automation System</title>
+    <title>StudQ</title>
     
     <style>
  
@@ -18,20 +18,20 @@
             box-shadow: 0px 1px 0px 0px #f0f7fa;
             background-color:transparent;
             border-radius:30px;
-            border:3px solid orangered;
+            border:3px solid #1161ee;
             display:inline-block;
             cursor:pointer;
-            color:orangered;
+            color:#1161ee;
             font-size:16px;
             font-weight:bold;
             padding:7px 17px;
-            margin: 5px;
+            margin: auto;
             text-decoration:none;
         }
         .myButton:hover {
-        background-color: orangered;
+        background-color: #1161ee;
             color: white;
-             box-shadow: 0px 0px 5px orangered;
+             box-shadow: 0px 0px 5px #1161ee;
         }
         .myButton:active {
             position:relative;
@@ -54,10 +54,10 @@
        
         .heading{
             text-align: center;
-            border-bottom: solid 4px orange;
+           
         }
          
-        .button-design {
+        .myButton {
             width: 100%;
             text-align: center;
             margin: auto;
@@ -71,12 +71,13 @@
     <script src="https://www.gstatic.com/firebasejs/9.0.1/firebase-compat.js"></script>
  
     <div class = "heading">
-    <p>Queue System</p>
+    <h1>StudQ</h1>
     </div>
  
     <form>
 
         <input type="button" id="start" class="myButton" value="Start Queue"/><br/>
+        <br></br>
         <input type="button" id="end" class="myButton" value="End Queue"/><br/>
     </form>
     <script src="popup.js"></script>

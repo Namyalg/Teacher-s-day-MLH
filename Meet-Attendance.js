@@ -8,30 +8,18 @@ chrome.runtime.onMessage.addListener(startIt);
 
 function startIt(message, sender, sendResponse){
 
-    //alert(message);
+
     
     if(document.domain == "meet.google.com"){
         if(message == 1){
             localStorage.setItem('status', "set")
+            alert("Queue started")
         }
         else if(message == 2){
             localStorage.setItem('status', "not")
+            alert("Queue ended")
         }
 
-        
-        // try{
-        //     var names = document.querySelectorAll('.YTbUzc');
-        //     var times = document.querySelectorAll('.MuzmKe');
-        //     for(var i = 0; i < names.length; i++){
-        //         console.log(names[i].innerHTML);
-        //         console.log(times[i].innerHTML);
-        //         chrome.runtime.sendMessage({Name : names[i].innerHTML, Time : times[i].innerHTML});   
-        //     }
-        // }
-        // catch(err){
-        //     console.log(err)
-        // }
-        // console.log("You are on Google Meet session");
     }
 } 
 
@@ -46,7 +34,10 @@ window.setInterval(function() {
             for(var i = 0; i < names.length; i++){
                 console.log(names[i].innerHTML);
                 console.log(times[i].innerHTML);
-                chrome.runtime.sendMessage({Name : names[i].innerHTML, Time : times[i].innerHTML});   
+                if(names[i].innerHTML !== "You"){
+                    chrome.runtime.sendMessage({Name : names[i].innerHTML, Time : times[i].innerHTML});   
+                }
+               
             }
         }
         catch(err){

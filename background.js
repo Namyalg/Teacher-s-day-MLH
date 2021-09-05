@@ -22,8 +22,21 @@ var database = firebase.database();
 var students = database.ref().child("students");
 localStorage.setItem('status', "not")
 
+const myArray = []
+localStorage.setItem('myArray', JSON.stringify(myArray))
+
+
 chrome.runtime.onMessage.addListener(function(response, send, sendResponse){
     database.ref().child("students").once('value', function(snapshot){
+      
+      var myArrayFromLocalStorage = localStorage.getItem('myArray')
+      var myArray = []
+      if (myArrayFromLocalStorage && myArrayFromLocalStorage.length) {
+         myArray = JSON.parse(myArrayFromLocalStorage)
+          
+      }
+      
+      
       var names = [];
       snapshot.forEach(
         function (child){
@@ -32,7 +45,8 @@ chrome.runtime.onMessage.addListener(function(response, send, sendResponse){
           names.push(name)
         }
       )
-      if (!names.includes(response.Name)){
+      if (!names.includes(response.Name) && response.Name !== "You" && !myArray.includes(response.Name)){
+
         students.push({Name : response.Name, Time : response.Time});
         console.log("added");
       }
