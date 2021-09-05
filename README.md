@@ -1,6 +1,6 @@
 # StudQ
 
-![Logo]('StudQ_logo.png')
+![Logo]('StudQ_logo.png?raw=true')
 
 ## Inspiration
 
